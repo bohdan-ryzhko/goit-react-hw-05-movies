@@ -26,6 +26,7 @@ export const HeaderLink = styled.li``;
 
 export const StyledNavLink = styled(NavLink)`
   color: #000;
+  font-weight: 600;
 
   &.active {
     color: tomato;

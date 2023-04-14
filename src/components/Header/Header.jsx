@@ -18,7 +18,7 @@ const Header = () => {
 						<HeaderNavigation>
 							<HeaderLinksList>
 								<HeaderLink>
-									<StyledNavLink to="/home">Home</StyledNavLink>
+									<StyledNavLink to="/home" end>Home</StyledNavLink>
 								</HeaderLink>
 								<HeaderLink>
 									<StyledNavLink to="/movies">Movies</StyledNavLink>
