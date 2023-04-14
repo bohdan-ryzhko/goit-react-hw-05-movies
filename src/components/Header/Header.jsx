@@ -7,7 +7,7 @@ import {
 	HeaderLinksList,
 	HeaderLink,
 	StyledNavLink
-} from "./Header.styles";
+} from "./Header.styled";
 
 const Header = () => {
 	return (
@@ -18,7 +18,7 @@ const Header = () => {
 						<HeaderNavigation>
 							<HeaderLinksList>
 								<HeaderLink>
-									<StyledNavLink to="/home" end>Home</StyledNavLink>
+									<StyledNavLink to="/" end>Home</StyledNavLink>
 								</HeaderLink>
 								<HeaderLink>
 									<StyledNavLink to="/movies">Movies</StyledNavLink>

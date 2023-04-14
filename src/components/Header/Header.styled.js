@@ -5,6 +5,7 @@ export const HeaderElement = styled.header`
   min-width: 100vw;
   height: 70px;
   box-shadow: 0 0 15px #888888;
+  margin-bottom: 20px;
 `;
 
 export const HeaderInner = styled.div`

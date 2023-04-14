@@ -1,26 +1,39 @@
-import Movie from "components/Movie/Movie";
+import PopularMovie from "components/PopularMovie/PopularMovie";
+import { Container } from "index.styled";
 import { useEffect, useState } from "react";
-import { fetchMovies } from "services/fetchMovies";
+import { fetchPopularMovies } from "services/fetchPopularMovies";
+import { Title, MoviesList } from "./Home.styled";
 
 const Home = () => {
 
 	const [popularMovies, setPopularMovies] = useState([]);
 
 	useEffect(() => {
-		fetchMovies()
+		const controller = new AbortController();
+		fetchPopularMovies(controller.signal)
 			.then(({ data }) => {
-				setPopularMovies(data.results)
-			});
+				if (!data) {
+					throw new Error(data);
+				}
+				setPopularMovies(data.results);
+			}).catch(error => {
+				console.log(error);
+			})
+		
+		return () => {
+			controller.abort();
+		}
 	}, []);
 
 	return (
-		<div>
-			<ul>
+		<Container>
+			<Title>Trending today</Title>
+			<MoviesList>
 				{
-					popularMovies.map(movie => <Movie key={movie.id} movie={movie} />)
+					popularMovies.map(movie => <PopularMovie key={movie.id} movie={movie} />)
 				}
-			</ul>
-		</div>
+			</MoviesList>
+		</Container>
 	)
 }
 
