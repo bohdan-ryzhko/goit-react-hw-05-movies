@@ -1,6 +1,6 @@
 import { SearchForm } from "components/SearchForm/SearchForm";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { fetchSearchMovies } from "services/fetchSearchMovies";
 import { SearchMovie, SectionMovie } from "./Movies.styled";
 import { Container } from "index.styled";
@@ -12,6 +12,8 @@ const Movies = () => {
 	const [searchMovies, setSearchMovies] = useState([]);
 	const [searchQuery, setSearchQuery] = useSearchParams();
 	const searchValue = searchQuery.get("query") ?? "";
+
+	const location = useLocation();
 	
 	useEffect(() => {
 		const controller = new AbortController();
@@ -23,7 +25,6 @@ const Movies = () => {
 					return Promise.reject(data)
 				};
 				setSearchMovies(data.data.results);
-				console.log(data.data);
 			})
 			.catch(error => {
 				console.log(error)
@@ -42,7 +43,7 @@ const Movies = () => {
 					{
 						searchMovies.length > 0 &&
 						searchMovies.map(movie => <SearchMovie key={movie.id}>
-							<StyledLink to={`${movie.id}`}>{movie.title}</StyledLink>
+							<StyledLink state={{ from:location }} to={`${movie.id}`}>{movie.title}</StyledLink>
 						</SearchMovie>)
 					}
 				</MoviesList>

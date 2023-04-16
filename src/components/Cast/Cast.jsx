@@ -17,7 +17,6 @@ const Cast = () => {
 					return Promise.reject(data);
 				}
 				setCast(data.data.cast);
-				console.log(data);
 			}).catch(error => {
 				console.log(error);
 			})

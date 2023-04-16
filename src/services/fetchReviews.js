@@ -11,7 +11,6 @@ export const fetchReviews = async (movieId, signal) => {
 			},
 		});
 	} catch (error) {
-		console.log(error);
 		return error;
 	}
 }

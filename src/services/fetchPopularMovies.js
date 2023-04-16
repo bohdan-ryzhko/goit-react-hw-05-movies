@@ -13,7 +13,6 @@ export const fetchPopularMovies = async (signal) => {
 			}
 		})
 	} catch (error) {
-		console.log(error);
 		return error;
 	}
 }

@@ -11,7 +11,6 @@ export const fetchMovieById = async (movieId, signal) => {
 			}
 		})
 	} catch (error) {
-		console.log(error);
 		return error;
 	}
 }

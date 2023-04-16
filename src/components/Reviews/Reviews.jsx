@@ -17,7 +17,6 @@ const Reviews = () => {
 				if (data.status !== 200) {
 					return Promise.reject(data);
 				}
-				console.log(data);
 				setReviews(data.data.results);
 			}).catch(error => {
 				console.log(error);

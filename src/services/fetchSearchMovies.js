@@ -13,7 +13,6 @@ export const fetchSearchMovies = async (query, signal) => {
 			},
 		});
 	} catch (error) {
-		console.log(error);
 		return error;
 	}
 }

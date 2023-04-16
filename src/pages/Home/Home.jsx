@@ -3,6 +3,7 @@ import { Container } from "index.styled";
 import { useEffect, useState } from "react";
 import { fetchPopularMovies } from "services/fetchPopularMovies";
 import { Title, MoviesList } from "./Home.styled";
+// import { useLocation } from "react-router-dom";
 
 const Home = () => {
 
@@ -15,7 +16,6 @@ const Home = () => {
 				if (data.status !== 200) {
 					return Promise.reject(data);
 				}
-				console.log(data);
 				setPopularMovies(data.data.results);
 			}).catch(error => {
 				console.log(error);
