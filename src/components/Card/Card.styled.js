@@ -1,7 +1,12 @@
 import styled from "@emotion/styled";
 
 export const MovieCard = styled.div`
+	display: flex;
+	gap: 10px;
+`;
 
+export const Description = styled.div`
+	
 `;
 
 export const CardTitle = styled.h2`
