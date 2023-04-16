@@ -10,8 +10,11 @@ export const Card = ({ popularMovie: { poster_path, title, overview, genres, vot
 
 	useEffect(() => {
 		fetchImage()
-			.then(({ data: { images } }) => {
-				setImageUrl(images.base_url + "w500");
+			.then(data => {
+				if (data.status !== 200) {
+					throw new Error(data);
+				}
+				setImageUrl(data.data.images.base_url + "w500");
 			})
 			.catch(error => console.log(error));
 	}, []);

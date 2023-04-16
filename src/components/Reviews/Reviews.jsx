@@ -25,7 +25,7 @@ const Reviews = () => {
 		<>
 			{
 				reviews.length === 0
-					? <p>We don't have ane reviews for this movie</p>
+					? <p>We don't have any reviews for this movie</p>
 					: (
 						<ul>
 							{
