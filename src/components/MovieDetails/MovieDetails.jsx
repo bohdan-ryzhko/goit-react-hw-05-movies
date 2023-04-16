@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { fetchMovieById } from "services/fetchMovieById";
 import { MovieDetailsSection } from "./MovieDetails.styled";
@@ -9,6 +9,8 @@ const MovieDetails = () => {
 	const [popularMovie, setPopularMovie] = useState(null);
 	const { movieId } = useParams();
 	const location = useLocation();
+
+	const backLinkRef = useRef(location.state?.from ?? "/");
 
 	useEffect(() => {
 		fetchMovieById(movieId)
@@ -26,7 +28,7 @@ const MovieDetails = () => {
 	return (
 		<MovieDetailsSection>
 			<Container>
-				<Link to={location.state?.from ?? "/"}>
+				<Link to={backLinkRef.current}>
 					Go back
 				</Link>
 				{
