@@ -12,11 +12,11 @@ const Cast = () => {
 	useEffect(() => {
 		const controller = new AbortController();
 		fetchMovieCredits(movieId, controller.signal)
-			.then(({ data }) => {
-				if (!data) {
-					throw new Error(data);
+			.then(data => {
+				if (data.status !== 200) {
+					return Promise.reject(data);
 				}
-				setCast(data.cast);
+				setCast(data.data.cast);
 				console.log(data);
 			}).catch(error => {
 				console.log(error);
@@ -33,7 +33,10 @@ const Cast = () => {
 				cast.length > 0 &&
 				<ul>
 					{
-						cast.map(actor => <li key={actor.id} >{actor.original_name}</li>)
+						cast.map(actor => <li key={actor.id}>
+							<img width={20} height={30} src={actor.profile_path} alt="" />
+							{actor.original_name}
+						</li>)
 					}
 				</ul>
 			}

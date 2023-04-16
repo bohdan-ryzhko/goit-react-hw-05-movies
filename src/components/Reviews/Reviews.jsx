@@ -13,9 +13,12 @@ const Reviews = () => {
 		const controller = new AbortController();
 		
 		fetchReviews(movieId, controller.signal)
-			.then(({ data }) => {
-				setReviews(data.results);
+			.then(data => {
+				if (data.status !== 200) {
+					return Promise.reject(data);
+				}
 				console.log(data);
+				setReviews(data.data.results);
 			}).catch(error => {
 				console.log(error);
 			})

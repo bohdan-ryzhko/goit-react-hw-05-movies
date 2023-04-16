@@ -13,11 +13,12 @@ const MovieDetails = () => {
 	useEffect(() => {
 		const controller = new AbortController();
 		fetchMovieById(movieId, controller.signal)
-			.then(({ data }) => {
-				if (!data) {
-					throw new Error(data);
+			.then(data => {
+				if (data.status !== 200) {
+					return Promise.reject(data);
 				}
-				setPopularMovie(data);
+				console.log(data);
+				setPopularMovie(data.data);
 			}).catch(error => {
 				console.log(error);
 			})

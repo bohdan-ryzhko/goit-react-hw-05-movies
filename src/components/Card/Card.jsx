@@ -8,7 +8,7 @@ export const Card = ({ popularMovie: { poster_path, title, overview, genres }, m
 		<>
 			<MovieCard>
 				<div>
-					<img width={100} height={100} src={`movies/${movieId}${poster_path}`} alt="" />
+					<img width={100} height={100} src={`${movieId}${poster_path}`} alt="" />
 				</div>
 				<CardTitle>{title}</CardTitle>
 				<div>

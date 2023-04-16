@@ -11,11 +11,12 @@ const Home = () => {
 	useEffect(() => {
 		const controller = new AbortController();
 		fetchPopularMovies(controller.signal)
-			.then(({ data }) => {
-				if (!data) {
-					throw new Error(data);
+			.then(data => {
+				if (data.status !== 200) {
+					return Promise.reject(data);
 				}
-				setPopularMovies(data.results);
+				console.log(data);
+				setPopularMovies(data.data.results);
 			}).catch(error => {
 				console.log(error);
 			})
