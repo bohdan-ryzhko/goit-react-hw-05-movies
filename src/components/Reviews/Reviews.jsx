@@ -10,9 +10,7 @@ const Reviews = () => {
 	const { movieId } = useParams();
 
 	useEffect(() => {
-		const controller = new AbortController();
-		
-		fetchReviews(movieId, controller.signal)
+		fetchReviews(movieId)
 			.then(data => {
 				if (data.status !== 200) {
 					return Promise.reject(data);
@@ -20,11 +18,7 @@ const Reviews = () => {
 				setReviews(data.data.results);
 			}).catch(error => {
 				console.log(error);
-			})
-
-		return () => {
-			controller.abort();
-		}
+		})
 	}, [movieId]);
 
 	return (

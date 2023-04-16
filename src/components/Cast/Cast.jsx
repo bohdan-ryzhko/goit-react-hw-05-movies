@@ -5,13 +5,11 @@ import { fetchMovieCredits } from "services/fetchMovieCredits";
 const Cast = () => {
 
 	const { movieId } = useParams();
-	console.log(movieId);
 
 	const [cast, setCast] = useState([]);
 
 	useEffect(() => {
-		const controller = new AbortController();
-		fetchMovieCredits(movieId, controller.signal)
+		fetchMovieCredits(movieId)
 			.then(data => {
 				if (data.status !== 200) {
 					return Promise.reject(data);
@@ -20,10 +18,6 @@ const Cast = () => {
 			}).catch(error => {
 				console.log(error);
 			})
-		
-		return () => {
-			controller.abort();
-		}
 	}, [movieId]);
 
 	return (

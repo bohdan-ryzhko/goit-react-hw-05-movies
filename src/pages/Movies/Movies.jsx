@@ -16,10 +16,9 @@ const Movies = () => {
 	const location = useLocation();
 	
 	useEffect(() => {
-		const controller = new AbortController();
 		if (!searchValue) return;
 
-		fetchSearchMovies(searchValue, controller.signal)
+		fetchSearchMovies(searchValue)
 			.then(data => {
 				if (data.status !== 200) {
 					return Promise.reject(data)
@@ -29,10 +28,6 @@ const Movies = () => {
 			.catch(error => {
 				console.log(error)
 			});
-
-		return () => {
-			controller.abort();
-		}
 	}, [searchValue]);
 
 	return (

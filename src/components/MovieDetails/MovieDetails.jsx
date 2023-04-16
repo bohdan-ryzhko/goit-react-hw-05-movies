@@ -21,17 +21,24 @@ const MovieDetails = () => {
 				console.log(error);
 			})
 	}, [movieId]);
+	
+	const setPathBackLink = ({ state }) => {
+		if (!state) {
+			return "/";
+		}
 
-	const setPathBakLink = ({ state: { from } }) => {
-		if (from.search === "") return from.pathname;
-		return from.pathname + "/" + from.search;
+		if (!state.from.search) {
+			return state.from.pathname;
+		} else {
+			return state.from.pathname + "/" + state.from.search;
+		}
 	}
 
 	return (
 		<MovieDetailsSection>
 			<Container>
-				<Link to={setPathBakLink(location)}>
-					Back
+				<Link to={setPathBackLink(location)}>
+					Go back
 				</Link>
 				{
 					popularMovie &&

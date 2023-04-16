@@ -10,8 +10,7 @@ const Home = () => {
 	const [popularMovies, setPopularMovies] = useState([]);
 
 	useEffect(() => {
-		const controller = new AbortController();
-		fetchPopularMovies(controller.signal)
+		fetchPopularMovies()
 			.then(data => {
 				if (data.status !== 200) {
 					return Promise.reject(data);
@@ -20,10 +19,6 @@ const Home = () => {
 			}).catch(error => {
 				console.log(error);
 			})
-		
-		return () => {
-			controller.abort();
-		}
 	}, []);
 
 	return (
