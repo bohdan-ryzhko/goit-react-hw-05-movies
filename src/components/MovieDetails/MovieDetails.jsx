@@ -17,27 +17,16 @@ const MovieDetails = () => {
 					return Promise.reject(data);
 				}
 				setPopularMovie(data.data);
+				console.log(data.data);
 			}).catch(error => {
 				console.log(error);
 			})
 	}, [movieId]);
-	
-	const setPathBackLink = ({ state }) => {
-		if (!state) {
-			return "/";
-		}
-
-		if (!state.from.search) {
-			return state.from.pathname;
-		} else {
-			return state.from.pathname + "/" + state.from.search;
-		}
-	}
 
 	return (
 		<MovieDetailsSection>
 			<Container>
-				<Link to={setPathBackLink(location)}>
+				<Link to={location.state?.from ?? "/"}>
 					Go back
 				</Link>
 				{
