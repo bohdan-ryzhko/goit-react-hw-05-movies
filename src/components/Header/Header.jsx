@@ -8,6 +8,7 @@ import {
 	HeaderLink,
 	StyledNavLink
 } from "./Header.styled";
+import { Suspense } from "react";
 
 const Header = () => {
 	return (
@@ -28,7 +29,11 @@ const Header = () => {
 					</HeaderInner>
 				</Container>
 			</HeaderElement>
-			<Outlet />
+			<main>
+				<Suspense fallback={<div>Loading...</div>}>
+					<Outlet />
+				</Suspense>
+			</main>
 		</>
 	)
 }

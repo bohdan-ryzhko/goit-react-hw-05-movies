@@ -2,7 +2,7 @@ import { AdditionalInformation } from "components/AdditionalInformation/Addition
 import { MovieCard, CardTitle, OverviewDescription, GenresList, Genre } from "./Card.styled"
 import { Outlet } from "react-router-dom"
 
-export const Card = ({ popularMovie: { poster_path, title, overview, genres }, movieId }) => {
+export const Card = ({ popularMovie: { poster_path, title, overview, genres } }) => {
 
 	return (
 		<>

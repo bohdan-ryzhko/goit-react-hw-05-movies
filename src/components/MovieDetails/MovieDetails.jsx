@@ -34,7 +34,7 @@ const MovieDetails = () => {
 				{
 					popularMovie &&
 					<>
-						<Card popularMovie={popularMovie} movieId={movieId} />
+						<Card popularMovie={popularMovie} />
 					</>
 				}
 			</Container>
